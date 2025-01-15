@@ -9,7 +9,19 @@ namespace timer {
     //% time.defl=500
     //% handlerStatement=1
     //% %time=timePicker ms"
-    export function after(time: number, thenDo: () => void): number {
+    export function after(time: number, thenDo: () => void) {
+        setTimeout(thenDo, time)
+    }
+
+    /**
+ * Same functionality as the after block, however this returns
+ * an ID which can be cancelled using the cancel block.
+ */
+    //% block="after $time do"
+    //% time.defl=500
+    //% handlerStatement=1
+    //% %time=timePicker ms"
+    export function afterID(time: number, thenDo: () => void): number {
         let id: number = setTimeout(thenDo, time)
         return id
     }
